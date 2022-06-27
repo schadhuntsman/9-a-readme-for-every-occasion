@@ -1,5 +1,13 @@
 // TODO: Include packages needed for this application
+//need to add badges to readme when choosing a license
 
+//put link to github profile after it's added to the doc
+
+//THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+
+// WHEN I enter my email address
+
+// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -82,18 +90,61 @@ inquirer.prompt (
         tests,
         questions,
         github,
-        email,  
-    }) ==> {
+        email  
+})=>{
         //template for usage
-const layout =`# ${title}`
-    }  
+const layout =`# ${title}
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Description](#description)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#qustion)
+* [GitHub](#github)
+* [Email](#email)
+# Installation
+${installation}
+## Usage
+${usage}
+## License
+${license}
+### Description
+${description}
+## Contributing
+${contributing}
+## Tests
+${tests}
+## Questions
+${questions}
+
+# Contact
+* GitHub :${github}
+* Email :${email}`;  
+    
+//Funtion to create new readme using file system model
+writeToFile(title,layout);
 }
+);
+//creating writeToFile function
+function writeToFile(fileName,data){
+//file system model
+writeToFile(fileName,data) {
+    fs.writeFile(`./${fileName.toLowerCase().split('')}.md`,data,(error)=> {
+        if(error){
+            console.log(error)
+        }
+        console.log('Your ReadMe file has been genrated.');
+    })
+}
+};
+
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+// function init() {}
 
 // Function call to initialize app
-init();
+// init();
