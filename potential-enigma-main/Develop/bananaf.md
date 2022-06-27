@@ -1,4 +1,4 @@
-# ow
+# banana f
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
@@ -9,20 +9,18 @@
 * [GitHub](#github)
 * [Email](#email)
 # Installation
-no
+command line
 ## Usage
-yea
+it takes info and converts into a professional readme
 ## License
 The MIT License
 ### Description
-blah
+make sure to brush twice a day
 ### Contributing
-just you know
+c'mon, you know
 ## Tests
-you know
-## Questions
-nada
+nah
 
-# Contact
-* GitHub :[https://github.com/coding-boot-camp/potential-enigma]
+## Questions :make sure to visit my site
+* GitHub :schadhuntsman 
 * Email :schadhuntsman@gmail.com

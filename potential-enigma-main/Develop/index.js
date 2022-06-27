@@ -64,13 +64,13 @@ inquirer.prompt (
         {
             type: 'input',
             name: 'questions',
-            message: "Do you have a question you'd like to ask?",
+            message: "How do people get ahold of you?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         }, 
         {      
             type: 'input',
             name: 'github',
-            message: 'GitHub username:',
+            message: "What's your GitHub profile page?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
@@ -80,8 +80,9 @@ inquirer.prompt (
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}},
         }
      ]
-    //  title, install, usage, license, descrip, contrib, test, questi, git, email
-    ).then(({
+    
+     //  title, install, usage, license, descrip, contrib, test, questi, git, email
+    ).then(({ 
         title,
         installation,
         usage,
@@ -92,7 +93,9 @@ inquirer.prompt (
         questions,
         github,
         email  
+        
 })=>{
+    
         //template for usage
 const layout =`# ${title}
 * [Installation](#installation)
@@ -116,13 +119,13 @@ ${description}
 ${contributing}
 ## Tests
 ${tests}
-## Questions
-${questions}
 
-# Contact
-* GitHub :${github}
-* Email :${email}`;  
-    
+## Questions :${questions}
+* GitHub :${github} 
+* Email :${email}`;
+
+
+const github = github.textContent += ".github.io";
 //Funtion to create new readme using file system model
 writeToFile(title,layout);
 }
