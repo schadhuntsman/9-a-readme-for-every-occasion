@@ -20,7 +20,7 @@ inquirer.prompt (
         {
             type: 'input',
             name: 'title',
-            message: "name of your project?",
+            message: "What's the name of your project?",
             //legitimize choices to find if the user put an answer.
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}},
         },
@@ -40,7 +40,7 @@ inquirer.prompt (
             type: 'list',
             name: 'license',
             message: "Which licenses did you use?",
-            options: ['The MIT License', 'Apache License', 'The GPL License', 'GNU License', 'NA'],
+            choices: ['The MIT License', 'Apache License', 'The GPL License', 'GNU License', 'NA'],
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
@@ -58,7 +58,7 @@ inquirer.prompt (
         {
             type: 'input',
             name: 'tests',
-            message: "Who is involved in your project?",
+            message: "View tests?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
@@ -66,8 +66,8 @@ inquirer.prompt (
             name: 'questions',
             message: "Do you have a question you'd like to ask?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
-        },       
-        {
+        }, 
+        {      
             type: 'input',
             name: 'github',
             message: 'GitHub username:',
@@ -77,9 +77,10 @@ inquirer.prompt (
             type: 'input',
             name: 'email',
             message: "What's your email address?",
-            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}},
         }
-    ]
+     ]
+    //  title, install, usage, license, descrip, contrib, test, questi, git, email
     ).then(({
         title,
         installation,
@@ -100,7 +101,7 @@ const layout =`# ${title}
 * [Description](#description)
 * [Contributing](#contributing)
 * [Tests](#tests)
-* [Questions](#qustion)
+* [Questions](#qustions)
 * [GitHub](#github)
 * [Email](#email)
 # Installation
@@ -111,7 +112,7 @@ ${usage}
 ${license}
 ### Description
 ${description}
-## Contributing
+### Contributing
 ${contributing}
 ## Tests
 ${tests}
@@ -129,15 +130,16 @@ writeToFile(title,layout);
 //creating writeToFile function
 function writeToFile(fileName,data){
 //file system model
-writeToFile(fileName,data) {
-    fs.writeFile(`./${fileName.toLowerCase().split('')}.md`,data,(error)=> {
+
+//file system
+fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`,data,(error)=> {
         if(error){
             console.log(error)
         }
-        console.log('Your ReadMe file has been genrated.');
+        console.log('Your Readme file has been genrated');
     })
+
 }
-};
 
 
 // TODO: Create a function to write README file
