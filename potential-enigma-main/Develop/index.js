@@ -7,12 +7,12 @@ const fs = require('fs');
 
 const questions = [];
 
-inquirer.prompt {
+inquirer.prompt (
     [
         {
             type: 'input',
             name: 'title',
-            message: "Title of your project?",
+            message: "name of your project?",
             //legitimize choices to find if the user put an answer.
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}},
         },
@@ -24,35 +24,69 @@ inquirer.prompt {
         },
         {
             type: 'input',
-            name: 'directions',
-            message: "Directions to be followed",
-            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
-        },
-        {
-            type: 'input',
-            name: 'installation',
-            message: "People involved in project?",
-            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
-        },
-        {
-            type: 'input',
-            name: 'operation',
+            name: 'usage',
             message: "How do you use your project?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
             type: 'list',
-            name: 'licensure',
+            name: 'license',
             message: "Which licenses did you use?",
-            options: ['The MIT Licensure', 'Apache License', 'The GPL License', 'GNU License', 'NA'],
+            options: ['The MIT License', 'Apache License', 'The GPL License', 'GNU License', 'NA'],
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
             type: 'input',
-            name: 'gitHub',
-            message: 
+            name: 'description',
+            message: "description to be followed",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },
+        {
+            type: 'input',
+            name: 'contributing',
+            message: "Who is involved in your project?",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: "Who is involved in your project?",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },
+        {
+            type: 'input',
+            name: 'questions',
+            message: "Do you have a question you'd like to ask?",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },       
+        {
+            type: 'input',
+            name: 'github',
+            message: 'GitHub username:',
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What's your email address?",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         }
     ]
+    ).then(({
+        title,
+        installation,
+        usage,
+        license,
+        description,
+        contributing,
+        tests,
+        questions,
+        github,
+        email,  
+    }) ==> {
+        //template for usage
+const layout =`# ${title}`
+    }  
 }
 
 // TODO: Create a function to write README file
