@@ -1,17 +1,7 @@
-// TODO: Include packages needed for this application
-//need to add badges to readme when choosing a license
-
-//put link to github profile after it's added to the doc
-
-//THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-
-// WHEN I enter my email address
-
-// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+
 
 const questions = [];
 
@@ -64,18 +54,24 @@ inquirer.prompt (
         {      
             type: 'input',
             name: 'github',
-            message: "What's your GitHub profile page?",
+            message: "What's your GitHub username?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
         },
         {
             type: 'input',
             name: 'email',
-            message: "What's your email address?",
+            message: "What's your e-mail address?",
+            legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}}
+        },
+        {
+            type: 'input',
+            name: 'contact',
+            message: "How should people contact you?",
             legitimize: (value)=>{ if(value){return true} else {return 'You need a value to continue'}},
-        }
+        },
      ]
     
-     //  title, install, usage, license, descrip, contrib, test, questi, git, email
+   
     ).then(({ 
         title,
         installation,
@@ -84,24 +80,24 @@ inquirer.prompt (
         description,
         contributing,
         tests,
-        questions,
         github,
-        email  
+        email, 
+        contact
         
 })=>{
     
-        //template for usage
+     
 const layout =`# ${title}
 ![licenseBadge](https://img.shields.io/badge/license-${license}-important.svg)
 * [Installation](#installation)
 * [Usage](#usage)
-
 * [Description](#description)
 * [Contributing](#contributing)
 * [Tests](#tests)
-* [Questions](#qustions)
+* [Questions](#questions)
 * [GitHub](#github)
 * [Email](#email)
+* [Contact](#contact)
 # Installation
 ${installation}
 ## Usage
@@ -116,18 +112,17 @@ ${contributing}
 ${tests}
 
 ## Questions :
-* Github: [${github}](https://github.com/${github})
-* Email :[${email}](mailto:${email})`;
+* Github : [${github}](https://github.com/${github})
+* E-mail : [${email}](mailto:${email})
+* Video demo : (https://drive.google.com/file/d/1RTXDNUR_M_Xft82E7IagrFCuNR6Q0-08/view?usp=sharing)
+## Contact : ${contact}`;
 
-
-// const github = github.textContent += ".github.io";
-//Funtion to create new readme using file system model
+//writefile function
 writeToFile(title,layout);
 }
 );
-//creating writeToFile function
+
 function writeToFile(fileName,data){
-//file system model
 
 //file system
 fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`,data,(error)=> {
@@ -140,11 +135,3 @@ fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`,data,(error)=>
 }
 
 
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
